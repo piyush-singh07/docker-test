@@ -16,6 +16,8 @@
 	<description>Demo project for SpringMavenDockerPlugin</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<repo.name>piyushsingh07</repo.name>
+		<img.name>springmavendockerplugin</img.name>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -46,7 +48,7 @@
 				<version>1.6.0</version>
 				<executions>
 					<!-- Remove existing image from local repo -->
-					<execution>
+					<!-- <execution>
 						<id>docker-clean</id>
 						<phase>install</phase>
 						<goals>
@@ -57,10 +59,10 @@
 							<workingDirectory>${project.basedir}</workingDirectory>
 							<arguments>
 								<argument>rmi</argument>
-								<argument>${project.groupId}/${project.artifactId}:${project.version}</argument>
+								<argument>${repo.name}/${img.name}:${project.version}</argument>
 							</arguments>
 						</configuration>
-					</execution>
+					</execution> -->
 					<!--  Create new docker image using Dockerfile which must be present 
 						in current working directory. 25 Tag the image using maven project version 
 						information. 26 -->
@@ -76,7 +78,7 @@
 							<arguments>
 								<argument>build</argument>
 								<argument>-t</argument>
-								<argument>${project.groupId}/${project.artifactId}:${project.version}</argument>
+								<argument>${repo.name}/${img.name}:${project.version}</argument>
 								<argument>.</argument>
 							</arguments>
 						</configuration>
@@ -112,7 +114,7 @@
 							<workingDirectory>${project.basedir}</workingDirectory>
 							<arguments>
 								<argument>push</argument>
-								<argument>${project.groupId}/${project.artifactId}:${project.version}</argument>
+								<argument>${repo.name}/${img.name}:${project.version}</argument>
 							</arguments>
 						</configuration>
 					</execution>
